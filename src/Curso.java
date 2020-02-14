@@ -57,5 +57,18 @@ public class Curso {
         return Objects.hash(codigoDeCurso);
     }
 
+    public Boolean adicionarUmAluno(Aluno umAluno){
+        if (matriculados.size()  <=  quantMaxAlunos){
+            matriculados.add(umAluno);
+            System.out.println("Aluno matriculado");
+            return true;
+        } else {
+            System.out.println("Infelizmente o aluno não passou");
+            return false;
+        }
+    }
 
+    public void excluirAluno(Aluno umAluno){
+        matriculados.remove(umAluno);
+    }
 }
