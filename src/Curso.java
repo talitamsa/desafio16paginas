@@ -1,10 +1,23 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class Curso {
     private String nomeDoCurso;
-    private int codigoDeCurso;
+    private Integer codigoDeCurso;
+    private ProfessorTitular professorTitular;
+    private ProfessorAdjunto professorAdjunto;
+    private List<Aluno> matriculados = new ArrayList<>();
+    private Integer quantMaxAlunos;
 
-    public Curso(String nomeDoCurso, int codigoDeCurso) {
+
+    public Curso(String nomeDoCurso, Integer codigoDeCurso, ProfessorTitular professorTitular, ProfessorAdjunto professorAdjunto, List<Aluno> matriculados, Integer quantMaxAlunos) {
         this.nomeDoCurso = nomeDoCurso;
         this.codigoDeCurso = codigoDeCurso;
+        this.professorTitular = professorTitular;
+        this.professorAdjunto = professorAdjunto;
+        this.matriculados = matriculados;
+        this.quantMaxAlunos = quantMaxAlunos;
     }
 
     public String getNomeDoCurso() {
@@ -19,7 +32,30 @@ public class Curso {
         return codigoDeCurso;
     }
 
-    public void setCodigoDeCurso(int codigoDeCurso) {
+    public void setCodigoDeCurso(Integer codigoDeCurso) {
         this.codigoDeCurso = codigoDeCurso;
     }
+
+    public Integer getQuantMaxAlunos() {
+        return quantMaxAlunos;
+    }
+
+    public void setQuantMaxAlunos(Integer quantMaxAlunos) {
+        this.quantMaxAlunos = quantMaxAlunos;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Curso curso = (Curso) o;
+        return codigoDeCurso == curso.codigoDeCurso;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigoDeCurso);
+    }
+
+
 }
